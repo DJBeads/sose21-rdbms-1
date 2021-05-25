@@ -1,7 +1,12 @@
-CREATE TABLE `books` (
-    `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `isbn` VARCHAR(50) NULL DEFAULT NULL,
-    `full_title` TEXT NULL DEFAULT NULL,
-    `publishing_date` DATE NULL,
-    PRIMARY KEY (`id`)
+create table users (
+    id int unsigned not null auto_increment unique primary key,
+    name tinytext not null
+);
+
+create table moods (
+    score tinyint not null,
+    timestamp datetime not null,
+    user_id int unsigned not null,
+    constraint `fk_mood_user`
+                   foreign key (user_id) references users (id)
 );
